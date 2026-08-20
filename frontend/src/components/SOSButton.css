@@ -1,0 +1,191 @@
+.sos-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:35px 0 50px;
+
+    position:relative;
+
+}
+
+/* ----------------------- */
+
+.sos-button{
+
+    width:190px;
+
+    height:190px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:
+        radial-gradient(circle at top,
+        #ff6666,
+        #ff2d2d 45%,
+        #c60000);
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    position:relative;
+
+    z-index:2;
+
+    box-shadow:
+        0 0 35px rgba(255,0,0,.35),
+        0 15px 35px rgba(255,0,0,.35);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+    animation:
+        heartbeat 2s infinite;
+}
+
+/* ----------------------- */
+
+.sos-button:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 50px rgba(255,0,0,.55),
+        0 18px 45px rgba(255,0,0,.45);
+
+}
+
+/* ----------------------- */
+
+.sos-icon{
+
+    font-size:58px;
+
+    margin-bottom:12px;
+
+}
+
+.sos-button span{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+/* ----------------------- */
+
+.sos-section h2{
+
+    margin-top:30px;
+
+    color:#1565C0;
+
+    font-size:30px;
+
+}
+
+.sos-section p{
+
+    color:#666;
+
+    margin-top:10px;
+
+    font-size:17px;
+
+}
+
+/* ----------------------- */
+
+.pulse-ring{
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    border:5px solid rgba(255,0,0,.25);
+
+    animation:ripple 2.5s infinite;
+
+}
+
+.delay{
+
+    animation-delay:1.2s;
+
+}
+
+/* ----------------------- */
+
+@keyframes heartbeat{
+
+0%{
+transform:scale(1);
+}
+
+15%{
+transform:scale(1.08);
+}
+
+30%{
+transform:scale(.98);
+}
+
+45%{
+transform:scale(1.05);
+}
+
+60%{
+transform:scale(1);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+/* ----------------------- */
+
+@keyframes ripple{
+
+0%{
+
+transform:scale(.75);
+
+opacity:.8;
+
+}
+
+100%{
+
+transform:scale(1.5);
+
+opacity:0;
+
+}
+
+}

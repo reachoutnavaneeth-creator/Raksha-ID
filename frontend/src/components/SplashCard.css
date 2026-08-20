@@ -1,0 +1,21 @@
+.splash-card {
+  width: 500px;
+  max-width: 90%;
+  padding: 55px 45px;
+
+  border-radius: 28px;
+  background: rgba(255,255,255,.85);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,.45);
+
+  box-shadow:
+    0 25px 70px rgba(36,102,255,.15),
+    0 5px 20px rgba(0,0,0,.05);
+
+  text-align: center;
+
+  animation: cardEntry .9s ease;
+}

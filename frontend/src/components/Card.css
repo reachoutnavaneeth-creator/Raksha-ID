@@ -1,0 +1,39 @@
+.card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+    margin:15px;
+}
+
+.card-icon{
+
+    width:70px;
+
+    height:70px;
+
+    background:#eef4ff;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:35px;
+
+    color:#2563eb;
+}

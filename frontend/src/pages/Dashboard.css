@@ -1,0 +1,4 @@
+.dashboard-page {
+  min-height: 100vh;
+  padding-bottom: 120px; /* Space for Bottom Navigation */
+}
