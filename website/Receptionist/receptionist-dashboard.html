@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Raksha ID - Receptionist Dashboard</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="receptionist.css">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-shield-heart"></i>
+        </div>
+
+        <div>
+            <h2>RAKSHA ID</h2>
+            <span>Emergency System</span>
+        </div>
+
+    </div>
+
+
+    <div class="receptionist-info">
+
+        <div class="profile-circle">
+            <i class="fa-solid fa-user-tie"></i>
+        </div>
+
+        <div>
+            <strong id="receptionistName">Receptionist</strong>
+            <small id="receptionistId">ID: --</small>
+        </div>
+
+    </div>
+
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <nav>
+
+        <button class="nav-item active"
+                onclick="showSection('overview', this)">
+
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showSection('emergency', this)">
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Emergency Requests</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showSection('ambulance', this)">
+
+            <i class="fa-solid fa-truck-medical"></i>
+            <span>Ambulance</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showSection('capacity', this)">
+
+            <i class="fa-solid fa-bed-pulse"></i>
+            <span>Hospital Capacity</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showSection('doctors', this)">
+
+            <i class="fa-solid fa-user-doctor"></i>
+            <span>Doctors</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showSection('patients', this)">
+
+            <i class="fa-solid fa-users"></i>
+            <span>Patient Queue</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showSection('records', this)">
+
+            <i class="fa-solid fa-file-medical"></i>
+            <span>Medical Records</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showSection('communication', this)">
+
+            <i class="fa-solid fa-phone-volume"></i>
+            <span>Communication</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showSection('sos', this)">
+
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>SOS Center</span>
+
+        </button>
+
+    </nav>
+
+</aside>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="topbar-title">
+
+            <h1>Receptionist Dashboard</h1>
+
+            <p>
+                Emergency coordination and hospital management
+            </p>
+
+        </div>
+
+
+        <!-- ================= TOP RIGHT ACTIONS ================= -->
+
+        <div class="top-actions">
+
+
+            <!-- CLOCK -->
+
+            <div class="clock">
+
+                <i class="fa-regular fa-clock"></i>
+
+                <span id="liveClock">
+                    --:--:--
+                </span>
+
+            </div>
+
+
+            <!-- NOTIFICATION -->
+
+            <button class="icon-btn notification-btn"
+                    onclick="showNotifications()">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <span id="notificationCount"
+                      class="notification-count">
+                    0
+                </span>
+
+            </button>
+
+
+            <!-- REFRESH -->
+
+            <button class="icon-btn"
+                    onclick="refreshDashboard()">
+
+                <i class="fa-solid fa-rotate"></i>
+
+            </button>
+
+
+            <!-- ================= LOGOUT ================= -->
+
+            <button class="logout-top-btn"
+                    onclick="logout()">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= OVERVIEW ================= -->
+
+    <section id="overview"
+             class="page-section active">
+
+
+        <!-- WELCOME CARD -->
+
+        <div class="welcome-card">
+
+            <div>
+
+                <span class="welcome-label">
+                    WELCOME BACK
+                </span>
+
+                <h2>
+                    Emergency Control Center
+                </h2>
+
+                <p>
+                    Monitor emergencies, patients, ambulances,
+                    doctors and hospital resources.
+                </p>
+
+            </div>
+
+
+            <div class="welcome-icon">
+
+                <i class="fa-solid fa-hospital"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= HOSPITAL STATUS ================= -->
+
+        <div class="hospital-status-card">
+
+            <div>
+
+                <span>
+                    Hospital Emergency Status
+                </span>
+
+                <h3 id="hospitalStatusText">
+                    Accepting Emergency Cases
+                </h3>
+
+            </div>
+
+
+            <button id="hospitalStatusButton"
+                    class="status-toggle accepting"
+                    onclick="toggleHospitalStatus()">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                ACCEPTING
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ================= STAT CARDS ================= -->
+
+        <div class="stats-grid">
+
+
+            <div class="stat-card emergency-stat">
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Active Emergencies
+                    </span>
+
+                    <strong id="activeEmergencyCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-truck-medical"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Ambulances
+                    </span>
+
+                    <strong id="ambulanceCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-bed"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Emergency Beds
+                    </span>
+
+                    <strong id="bedCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="fa-solid fa-user-doctor"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Doctors Available
+                    </span>
+
+                    <strong id="doctorCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>
+                    Quick Actions
+                </h2>
+
+                <p>
+                    Frequently used emergency controls
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="quick-grid">
+
+
+            <button onclick="openEmergencyModal()"
+                    class="quick-card emergency">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <strong>
+                    New Emergency
+                </strong>
+
+                <span>
+                    Create emergency request
+                </span>
+
+            </button>
+
+
+
+            <button onclick="openAmbulanceModal()"
+                    class="quick-card">
+
+                <i class="fa-solid fa-truck-medical"></i>
+
+                <strong>
+                    Dispatch Ambulance
+                </strong>
+
+                <span>
+                    Send ambulance
+                </span>
+
+            </button>
+
+
+
+            <button onclick="prepareBed()"
+                    class="quick-card">
+
+                <i class="fa-solid fa-bed"></i>
+
+                <strong>
+                    Prepare Bed
+                </strong>
+
+                <span>
+                    Prepare emergency bed
+                </span>
+
+            </button>
+
+
+
+            <button onclick="openSOS()"
+                    class="quick-card sos">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                <strong>
+                    SOS Center
+                </strong>
+
+                <span>
+                    Emergency communication
+                </span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ================= RECENT EMERGENCIES ================= -->
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>
+                    Recent Emergency Requests
+                </h2>
+
+                <p>
+                    Latest emergency activity
+                </p>
+
+            </div>
+
+
+            <button class="outline-btn"
+                    onclick="showSectionById('emergency')">
+
+                View All
+
+            </button>
+
+        </div>
+
+
+        <div class="table-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Patient</th>
+                        <th>Emergency</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Time</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="overviewEmergencyTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= EMERGENCY ================= -->
+
+    <section id="emergency"
+             class="page-section">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Emergency Request Monitoring
+                </h2>
+
+                <p>
+                    Monitor and manage incoming emergency requests.
+                </p>
+
+            </div>
+
+
+            <button class="primary-btn"
+                    onclick="openEmergencyModal()">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Emergency Request
+
+            </button>
+
+        </div>
+
+
+
+        <div class="priority-summary">
+
+
+            <div class="priority-card high">
+
+                <span>HIGH</span>
+
+                <strong id="highCount">
+                    0
+                </strong>
+
+            </div>
+
+
+
+            <div class="priority-card medium">
+
+                <span>MEDIUM</span>
+
+                <strong id="mediumCount">
+                    0
+                </strong>
+
+            </div>
+
+
+
+            <div class="priority-card low">
+
+                <span>LOW</span>
+
+                <strong id="lowCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="table-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Patient</th>
+                        <th>Emergency</th>
+                        <th>Priority</th>
+                        <th>Location</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="emergencyTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= AMBULANCE ================= -->
+
+    <section id="ambulance"
+             class="page-section">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Ambulance Dispatch
+                </h2>
+
+                <p>
+                    Track ambulance status and emergency response.
+                </p>
+
+            </div>
+
+
+            <button class="primary-btn"
+                    onclick="openAmbulanceModal()">
+
+                <i class="fa-solid fa-truck-medical"></i>
+
+                Dispatch Ambulance
+
+            </button>
+
+        </div>
+
+
+        <div id="ambulanceContainer"
+             class="ambulance-grid">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CAPACITY ================= -->
+
+    <section id="capacity"
+             class="page-section">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Hospital Capacity
+                </h2>
+
+                <p>
+                    Monitor emergency resources.
+                </p>
+
+            </div>
+
+
+            <button class="primary-btn"
+                    onclick="openCapacityModal()">
+
+                <i class="fa-solid fa-pen"></i>
+
+                Update Capacity
+
+            </button>
+
+        </div>
+
+
+
+        <div class="capacity-grid">
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+
+                    <i class="fa-solid fa-bed"></i>
+
+                </div>
+
+                <h3>
+                    Emergency Beds
+                </h3>
+
+                <strong id="capacityBeds">
+                    0 / 0
+                </strong>
+
+                <div class="progress">
+
+                    <div id="bedProgress"
+                         class="progress-bar">
+
+                    </div>
+
+                </div>
+
+                <span id="bedStatus">
+                    Available
+                </span>
+
+            </div>
+
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+
+                    <i class="fa-solid fa-bed-pulse"></i>
+
+                </div>
+
+                <h3>
+                    ICU Beds
+                </h3>
+
+                <strong id="capacityICU">
+                    0 / 0
+                </strong>
+
+                <div class="progress">
+
+                    <div id="icuProgress"
+                         class="progress-bar">
+
+                    </div>
+
+                </div>
+
+                <span id="icuStatus">
+                    Available
+                </span>
+
+            </div>
+
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+
+                    <i class="fa-solid fa-lungs"></i>
+
+                </div>
+
+                <h3>
+                    Ventilators
+                </h3>
+
+                <strong id="capacityVentilator">
+                    0 / 0
+                </strong>
+
+                <div class="progress">
+
+                    <div id="ventProgress"
+                         class="progress-bar">
+
+                    </div>
+
+                </div>
+
+                <span id="ventStatus">
+                    Available
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= DOCTORS ================= -->
+
+    <section id="doctors"
+             class="page-section">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Doctor Availability
+                </h2>
+
+                <p>
+                    View doctors currently available for emergencies.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="doctorContainer"
+             class="doctor-grid">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PATIENTS ================= -->
+
+    <section id="patients"
+             class="page-section">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Patient Queue
+                </h2>
+
+                <p>
+                    Manage patients waiting for emergency care.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="table-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Token</th>
+                        <th>Patient</th>
+                        <th>Emergency</th>
+                        <th>Priority</th>
+                        <th>Doctor</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="patientQueueTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= RECORDS ================= -->
+
+    <section id="records"
+             class="page-section">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Patient Medical Records
+                </h2>
+
+                <p>
+                    View emergency patient information.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="recordsContainer"
+             class="records-grid">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= COMMUNICATION ================= -->
+
+    <section id="communication"
+             class="page-section">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Emergency Communication
+                </h2>
+
+                <p>
+                    Send emergency messages and contact services.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="communication-grid">
+
+
+            <div class="communication-card">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <h3>
+                    Emergency Call
+                </h3>
+
+                <p>
+                    Contact emergency services.
+                </p>
+
+                <button onclick="makeEmergencyCall()"
+                        class="primary-btn">
+
+                    Call Emergency
+
+                </button>
+
+            </div>
+
+
+
+            <div class="communication-card">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+                <h3>
+                    Contact Doctor
+                </h3>
+
+                <p>
+                    Notify an available doctor.
+                </p>
+
+                <button onclick="notifyDoctor()"
+                        class="primary-btn">
+
+                    Notify Doctor
+
+                </button>
+
+            </div>
+
+
+
+            <div class="communication-card">
+
+                <i class="fa-solid fa-truck-medical"></i>
+
+                <h3>
+                    Contact Ambulance
+                </h3>
+
+                <p>
+                    Contact ambulance team.
+                </p>
+
+                <button onclick="contactAmbulance()"
+                        class="primary-btn">
+
+                    Contact Ambulance
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="message-card">
+
+            <h3>
+                Emergency Message
+            </h3>
+
+            <textarea id="emergencyMessage"
+                      placeholder="Enter emergency message..."></textarea>
+
+            <button onclick="sendEmergencyMessage()"
+                    class="primary-btn">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Send Message
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= SOS ================= -->
+
+    <section id="sos"
+             class="page-section">
+
+
+        <div class="sos-header">
+
+            <div>
+
+                <h2>
+                    SOS Center
+                </h2>
+
+                <p>
+                    Emergency response coordination center.
+                </p>
+
+            </div>
+
+
+            <div class="sos-indicator">
+
+                <span></span>
+
+                SYSTEM READY
+
+            </div>
+
+        </div>
+
+
+
+        <div class="sos-grid">
+
+
+            <button class="sos-action"
+                    onclick="activateSOS()">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                <strong>
+                    ACTIVATE SOS
+                </strong>
+
+                <span>
+                    Send immediate emergency alert
+                </span>
+
+            </button>
+
+
+
+            <button class="sos-action"
+                    onclick="prepareBed()">
+
+                <i class="fa-solid fa-bed"></i>
+
+                <strong>
+                    PREPARE BED
+                </strong>
+
+                <span>
+                    Prepare emergency bed
+                </span>
+
+            </button>
+
+
+
+            <button class="sos-action"
+                    onclick="notifyDoctor()">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+                <strong>
+                    ALERT DOCTOR
+                </strong>
+
+                <span>
+                    Notify available doctor
+                </span>
+
+            </button>
+
+
+
+            <button class="sos-action"
+                    onclick="openAmbulanceModal()">
+
+                <i class="fa-solid fa-truck-medical"></i>
+
+                <strong>
+                    DISPATCH AMBULANCE
+                </strong>
+
+                <span>
+                    Send emergency ambulance
+                </span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- ================= EMERGENCY MODAL ================= -->
+
+<div id="emergencyModal"
+     class="modal">
+
+
+    <div class="modal-box">
+
+
+        <button class="close-modal"
+                onclick="closeModal('emergencyModal')">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <h2>
+            Add Emergency Request
+        </h2>
+
+
+        <form onsubmit="addEmergency(event)">
+
+
+            <label>
+                Patient Name
+            </label>
+
+            <input id="emergencyPatient"
+                   required
+                   placeholder="Enter patient name">
+
+
+
+            <label>
+                Emergency Type
+            </label>
+
+            <input id="emergencyType"
+                   required
+                   placeholder="e.g. Accident, Cardiac">
+
+
+
+            <label>
+                Priority
+            </label>
+
+            <select id="emergencyPriority">
+
+                <option value="High">
+                    High
+                </option>
+
+                <option value="Medium">
+                    Medium
+                </option>
+
+                <option value="Low">
+                    Low
+                </option>
+
+            </select>
+
+
+
+            <label>
+                Location
+            </label>
+
+            <input id="emergencyLocation"
+                   required
+                   placeholder="Enter location">
+
+
+
+            <label>
+                Blood Group
+            </label>
+
+            <select id="emergencyBlood">
+
+                <option value="Unknown">
+                    Unknown
+                </option>
+
+                <option value="A+">
+                    A+
+                </option>
+
+                <option value="A-">
+                    A-
+                </option>
+
+                <option value="B+">
+                    B+
+                </option>
+
+                <option value="B-">
+                    B-
+                </option>
+
+                <option value="AB+">
+                    AB+
+                </option>
+
+                <option value="AB-">
+                    AB-
+                </option>
+
+                <option value="O+">
+                    O+
+                </option>
+
+                <option value="O-">
+                    O-
+                </option>
+
+            </select>
+
+
+
+            <label>
+                Allergies
+            </label>
+
+            <input id="emergencyAllergies"
+                   placeholder="Enter allergies or None">
+
+
+
+            <label>
+                Emergency Contact
+            </label>
+
+            <input id="emergencyContact"
+                   required
+                   placeholder="Enter contact number">
+
+
+
+            <button class="primary-btn full"
+                    type="submit">
+
+                Add Emergency Request
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= AMBULANCE MODAL ================= -->
+
+<div id="ambulanceModal"
+     class="modal">
+
+
+    <div class="modal-box">
+
+
+        <button class="close-modal"
+                onclick="closeModal('ambulanceModal')">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <h2>
+            Dispatch Ambulance
+        </h2>
+
+
+        <form onsubmit="dispatchAmbulance(event)">
+
+
+            <label>
+                Patient Name
+            </label>
+
+            <input id="ambulancePatient"
+                   required
+                   placeholder="Enter patient name">
+
+
+
+            <label>
+                Pickup Location
+            </label>
+
+            <input id="ambulanceLocation"
+                   required
+                   placeholder="Enter pickup location">
+
+
+
+            <label>
+                ETA
+            </label>
+
+            <input id="ambulanceETA"
+                   type="number"
+                   min="1"
+                   value="10"
+                   required>
+
+
+
+            <button class="primary-btn full"
+                    type="submit">
+
+                Dispatch Ambulance
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= CAPACITY MODAL ================= -->
+
+<div id="capacityModal"
+     class="modal">
+
+
+    <div class="modal-box">
+
+
+        <button class="close-modal"
+                onclick="closeModal('capacityModal')">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <h2>
+            Update Hospital Capacity
+        </h2>
+
+
+        <form onsubmit="updateCapacity(event)">
+
+
+            <label>
+                Emergency Beds Total
+            </label>
+
+            <input id="bedsTotal"
+                   type="number"
+                   min="0"
+                   required>
+
+
+
+            <label>
+                Emergency Beds Available
+            </label>
+
+            <input id="bedsAvailable"
+                   type="number"
+                   min="0"
+                   required>
+
+
+
+            <label>
+                ICU Beds Total
+            </label>
+
+            <input id="icuTotal"
+                   type="number"
+                   min="0"
+                   required>
+
+
+
+            <label>
+                ICU Beds Available
+            </label>
+
+            <input id="icuAvailable"
+                   type="number"
+                   min="0"
+                   required>
+
+
+
+            <label>
+                Ventilators Total
+            </label>
+
+            <input id="ventTotal"
+                   type="number"
+                   min="0"
+                   required>
+
+
+
+            <label>
+                Ventilators Available
+            </label>
+
+            <input id="ventAvailable"
+                   type="number"
+                   min="0"
+                   required>
+
+
+
+            <button class="primary-btn full"
+                    type="submit">
+
+                Save Capacity
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= NOTIFICATION MODAL ================= -->
+
+<div id="notificationModal"
+     class="modal">
+
+
+    <div class="modal-box">
+
+
+        <button class="close-modal"
+                onclick="closeModal('notificationModal')">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <h2>
+            Notifications
+        </h2>
+
+
+        <div id="notificationList"
+             class="notification-list">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="receptionist.js"></script>
+
+
+<!-- ================= TOP LOGOUT STYLE ================= -->
+
+<style>
+
+    /* ================= TOP RIGHT LOGOUT ================= */
+
+    .logout-top-btn {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 8px;
+
+        height: 42px;
+
+        padding: 0 16px;
+
+        border: none;
+
+        border-radius: 10px;
+
+        background: #ef4444;
+
+        color: white;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+
+        transition: all 0.2s ease;
+
+        white-space: nowrap;
+
+    }
+
+
+    .logout-top-btn i {
+
+        font-size: 15px;
+
+    }
+
+
+    .logout-top-btn:hover {
+
+        background: #dc2626;
+
+        transform: translateY(-1px);
+
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+
+    }
+
+
+    .logout-top-btn:active {
+
+        transform: translateY(0);
+
+    }
+
+
+    /* Make sure top actions stay on the right */
+
+    .top-actions {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        margin-left: auto;
+
+    }
+
+
+    /* Responsive */
+
+    @media (max-width: 768px) {
+
+        .logout-top-btn span {
+
+            display: none;
+
+        }
+
+        .logout-top-btn {
+
+            width: 42px;
+
+            padding: 0;
+
+        }
+
+    }
+
+</style>
+
+
+</body>
+</html>

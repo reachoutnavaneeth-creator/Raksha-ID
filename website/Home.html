@@ -1,0 +1,423 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RAKSHA ID | Emergency Healthcare</title>
+
+    <link rel="stylesheet" href="Design.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+    </div>
+
+
+    <!-- Floating Medical Icons -->
+
+    <div class="floating-icon icon-one">
+        <i class="fa-solid fa-heart-pulse"></i>
+    </div>
+
+    <div class="floating-icon icon-two">
+        <i class="fa-solid fa-plus"></i>
+    </div>
+
+    <div class="floating-icon icon-three">
+        <i class="fa-solid fa-stethoscope"></i>
+    </div>
+
+    <div class="floating-icon icon-four">
+        <i class="fa-solid fa-truck-medical"></i>
+    </div>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <div>
+                <h1>RAKSHA <span>ID</span></h1>
+                <p>Emergency Healthcare Intelligence</p>
+            </div>
+
+        </div>
+
+        <div class="header-status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-badge">
+                <i class="fa-solid fa-shield-heart"></i>
+                SECURE MEDICAL ACCESS
+            </div>
+
+            <h2>
+                Every Second.
+                <br>
+                <span>Every Life.</span>
+            </h2>
+
+            <p class="hero-description">
+                A unified emergency healthcare platform connecting
+                doctors and hospital teams when every second matters.
+            </p>
+
+
+            <!-- Animated Heartbeat -->
+
+            <div class="heartbeat">
+
+                <div class="heartbeat-line"></div>
+
+                <div class="heartbeat-label">
+                    <span></span>
+                    RAKSHA EMERGENCY NETWORK
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOGIN SECTION -->
+
+        <section class="access-section">
+
+            <div class="section-title">
+
+                <span>AUTHORIZED ACCESS</span>
+
+                <h3>
+                    Choose your portal
+                </h3>
+
+                <p>
+                    Select your role to continue securely.
+                </p>
+
+            </div>
+
+
+            <div class="login-container">
+
+
+                <!-- DOCTOR -->
+
+                <div class="login-card doctor-card">
+
+                    <div class="card-glow"></div>
+
+                    <div class="card-top">
+
+                        <div class="card-icon">
+
+                            <i class="fa-solid fa-user-doctor"></i>
+
+                        </div>
+
+                        <span class="role-number">
+                            01
+                        </span>
+
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <div class="role-label">
+                            MEDICAL PROFESSIONAL
+                        </div>
+
+                        <h3>
+                            Doctor Portal
+                        </h3>
+
+                        <p>
+                            Securely access authorized patient
+                            medical reports, emergency information
+                            and medical history.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="login-button doctor-button"
+                        onclick="openLogin('doctor')">
+
+                        <span>
+                            Enter Doctor Portal
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+
+                <!-- RECEPTIONIST -->
+
+                <div class="login-card receptionist-card">
+
+                    <div class="card-glow"></div>
+
+                    <div class="card-top">
+
+                        <div class="card-icon">
+
+                            <i class="fa-solid fa-hospital"></i>
+
+                        </div>
+
+                        <span class="role-number">
+                            02
+                        </span>
+
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <div class="role-label">
+                            HOSPITAL OPERATIONS
+                        </div>
+
+                        <h3>
+                            Receptionist Portal
+                        </h3>
+
+                        <p>
+                            Manage incoming emergency requests,
+                            ambulance dispatch and hospital
+                            availability.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="login-button receptionist-button"
+                        onclick="openLogin('receptionist')">
+
+                        <span>
+                            Enter Reception Portal
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+
+        <section class="features">
+
+            <div class="feature">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <div>
+                    <strong>Secure Access</strong>
+                    <small>Role-based authentication</small>
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                <div>
+                    <strong>Real-Time Response</strong>
+                    <small>Emergency information instantly</small>
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+                <div>
+                    <strong>Life-Centered</strong>
+                    <small>Designed for critical moments</small>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- LOGIN MODAL -->
+
+    <div class="modal" id="loginModal">
+
+        <div class="modal-box">
+
+
+            <button
+                class="close-button"
+                onclick="closeLogin()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div class="modal-icon" id="modalIcon">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+            </div>
+
+
+            <div class="modal-badge">
+                SECURE LOGIN
+            </div>
+
+
+            <h2 id="loginTitle">
+                Doctor Login
+            </h2>
+
+
+            <p id="loginDescription">
+                Secure access for authorized doctors.
+            </p>
+
+
+            <form onsubmit="login(event)">
+
+
+                <label id="idLabel">
+                    Doctor ID
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-id-card"></i>
+
+                    <input
+                        type="text"
+                        id="userId"
+                        placeholder="Enter your Doctor ID"
+                        required>
+
+                </div>
+
+
+                <label>
+                    Password
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required>
+
+                    <i
+                        class="fa-solid fa-eye password-eye"
+                        onclick="togglePassword()">
+                    </i>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-button">
+
+                    <span>Continue Securely</span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <div class="secure-note">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Your access is protected by
+                role-based security.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div>
+            <strong>RAKSHA ID</strong>
+            <span> | Emergency Healthcare Intelligence</span>
+        </div>
+
+        <p>
+            © 2026 RAKSHA ID • Built for faster emergency response
+        </p>
+
+    </footer>
+
+
+    <script src="Login.js"></script>
+
+</body>
+
+</html>
+
