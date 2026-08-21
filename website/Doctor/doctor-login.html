@@ -1,0 +1,125 @@
+DOCTOR.HTML
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RAKSHA ID | Doctor Portal</title>
+
+    <link rel="stylesheet" href="doctor-style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="login-page">
+
+        <div class="login-card">
+
+            <!-- BRAND -->
+            <div class="brand">
+                RAKSHA <span>ID</span>
+            </div>
+
+            <div class="portal-title">
+                Doctor Portal
+            </div>
+
+            <p class="subtitle">
+                Secure access for authorized medical professionals
+            </p>
+
+
+            <!-- LOGIN FORM -->
+            <form id="doctorLoginForm">
+
+                <label for="doctorId">
+                    Doctor ID
+                </label>
+
+                <input
+                    type="text"
+                    id="doctorId"
+                    placeholder="Enter Doctor ID"
+                    required
+                >
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <!-- PASSWORD BOX -->
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter Password"
+                        required
+                    >
+
+                    <i
+                        id="passwordEye"
+                        class="fa-solid fa-eye">
+                    </i>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+                <button
+                    type="submit"
+                    id="loginButton"
+                    class="login-button">
+
+                    <span>LOGIN SECURELY</span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <button
+                type="button"
+                class="forgot-button"
+                onclick="forgotPassword()">
+
+                Forgot Password?
+
+            </button>
+
+
+            <p
+                id="loginMessage"
+                class="login-message">
+            </p>
+
+
+            <div class="security-note">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Your access is protected by
+                role-based security.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="doctor.js"></script>
+
+</body>
+</html>
