@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>RAKSHA ID | Doctor Dashboard</title>
+
+    <!-- IMPORTANT: Your actual CSS filename -->
+    <link rel="stylesheet"
+          href="doctor-style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= BACKGROUND ================= -->
+
+<div class="background">
+
+    <div class="orb orb-one"></div>
+
+    <div class="orb orb-two"></div>
+
+    <div class="orb orb-three"></div>
+
+</div>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+        </div>
+
+        <div>
+
+            <h1>
+                RAKSHA <span>ID</span>
+            </h1>
+
+            <p>
+                Emergency Healthcare Intelligence
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            SYSTEM ONLINE
+
+        </div>
+
+
+        <div class="doctor-profile">
+
+            <div class="doctor-avatar">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+            </div>
+
+
+            <div>
+
+                <strong id="doctorName">
+                    Doctor
+                </strong>
+
+                <small>
+                    Medical Professional
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="logout-button"
+            onclick="logout()">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>
+                Logout
+            </span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+
+    <!-- ================= WELCOME ================= -->
+
+    <section class="welcome-section">
+
+        <div>
+
+            <div class="welcome-badge">
+
+                <i class="fa-solid fa-shield-heart"></i>
+
+                AUTHORIZED DOCTOR ACCESS
+
+            </div>
+
+
+            <h2>
+
+                Welcome back,
+                <span id="welcomeDoctor">
+                    Doctor
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Access emergency patient information,
+                medical reports and critical healthcare data.
+
+            </p>
+
+        </div>
+
+
+        <div class="emergency-status">
+
+            <span class="pulse-dot"></span>
+
+            Emergency Network Active
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats-grid">
+
+
+        <!-- PATIENTS -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">
+
+                <i class="fa-solid fa-users"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    TODAY'S PATIENTS
+                </span>
+
+                <strong>
+                    24
+                </strong>
+
+                <small>
+                    +4 from yesterday
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMERGENCY -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon red">
+
+                <i class="fa-solid fa-truck-medical"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    EMERGENCY CASES
+                </span>
+
+                <strong>
+                    06
+                </strong>
+
+                <small>
+                    2 critical
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- REPORTS -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon green">
+
+                <i class="fa-solid fa-file-medical"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    MEDICAL REPORTS
+                </span>
+
+                <strong>
+                    18
+                </strong>
+
+                <small>
+                    5 pending review
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- MONITORING -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon cyan">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    ACTIVE MONITORING
+                </span>
+
+                <strong>
+                    08
+                </strong>
+
+                <small>
+                    Live patients
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DASHBOARD GRID ================= -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- ================= SEARCH PATIENT ================= -->
+
+        <div class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span class="card-label">
+                        PATIENT ACCESS
+                    </span>
+
+                    <h3>
+                        Search Patient
+                    </h3>
+
+                </div>
+
+
+                <div class="heading-icon">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </div>
+
+            </div>
+
+
+            <p class="card-description">
+
+                Search authorized patient records
+                using their RAKSHA ID.
+
+            </p>
+
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-id-card"></i>
+
+                <input
+                    type="text"
+                    id="patientId"
+                    placeholder="Enter Patient RAKSHA ID">
+
+
+                <button
+                    onclick="searchPatient()">
+
+                    Search
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="searchResult"
+                class="search-result">
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= EMERGENCY CASES ================= -->
+
+        <div class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span class="card-label">
+                        PRIORITY ALERT
+                    </span>
+
+                    <h3>
+                        Emergency Cases
+                    </h3>
+
+                </div>
+
+
+                <div class="heading-icon emergency-icon">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="emergency-case">
+
+                <div class="case-icon">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                </div>
+
+
+                <div class="case-info">
+
+                    <strong>
+                        Emergency Patient
+                    </strong>
+
+                    <span>
+                        RAKSHA ID: RK1024
+                    </span>
+
+                </div>
+
+
+                <span class="critical">
+                    CRITICAL
+                </span>
+
+            </div>
+
+
+            <div class="emergency-case">
+
+                <div class="case-icon">
+
+                    <i class="fa-solid fa-user-injured"></i>
+
+                </div>
+
+
+                <div class="case-info">
+
+                    <strong>
+                        Emergency Patient
+                    </strong>
+
+                    <span>
+                        RAKSHA ID: RK1087
+                    </span>
+
+                </div>
+
+
+                <span class="urgent">
+                    URGENT
+                </span>
+
+            </div>
+
+
+            <button
+                class="view-button"
+                onclick="viewEmergencies()">
+
+                View All Emergencies
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= MEDICAL REPORTS ================= -->
+
+        <div class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span class="card-label">
+                        MEDICAL DATA
+                    </span>
+
+                    <h3>
+                        Recent Reports
+                    </h3>
+
+                </div>
+
+
+                <div class="heading-icon">
+
+                    <i class="fa-solid fa-file-medical"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-row">
+
+                <div class="report-icon">
+
+                    <i class="fa-solid fa-vial"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Blood Test Report
+                    </strong>
+
+                    <small>
+                        Patient: RK1024
+                    </small>
+
+                </div>
+
+
+                <span class="pending">
+                    REVIEW
+                </span>
+
+            </div>
+
+
+            <div class="report-row">
+
+                <div class="report-icon">
+
+                    <i class="fa-solid fa-x-ray"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        X-Ray Report
+                    </strong>
+
+                    <small>
+                        Patient: RK1087
+                    </small>
+
+                </div>
+
+
+                <span class="completed">
+                    READY
+                </span>
+
+            </div>
+
+
+            <div class="report-row">
+
+                <div class="report-icon">
+
+                    <i class="fa-solid fa-file-waveform"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        ECG Report
+                    </strong>
+
+                    <small>
+                        Patient: RK1102
+                    </small>
+
+                </div>
+
+
+                <span class="pending">
+                    REVIEW
+                </span>
+
+            </div>
+
+
+            <button
+                class="view-button"
+                onclick="viewReports()">
+
+                View Medical Reports
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <div class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span class="card-label">
+                        DOCTOR TOOLS
+                    </span>
+
+                    <h3>
+                        Quick Actions
+                    </h3>
+
+                </div>
+
+
+                <div class="heading-icon">
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="actions-grid">
+
+
+                <button
+                    onclick="openPatientRecords()">
+
+                    <i class="fa-solid fa-folder-open"></i>
+
+                    <span>
+                        Patient Records
+                    </span>
+
+                </button>
+
+
+                <button
+                    onclick="openMedicalHistory()">
+
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+
+                    <span>
+                        Medical History
+                    </span>
+
+                </button>
+
+
+                <button
+                    onclick="openEmergencyNetwork()">
+
+                    <i class="fa-solid fa-tower-broadcast"></i>
+
+                    <span>
+                        Emergency Network
+                    </span>
+
+                </button>
+
+
+                <button
+                    onclick="openProfile()">
+
+                    <i class="fa-solid fa-user-doctor"></i>
+
+                    <span>
+                        My Profile
+                    </span>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SECURITY ================= -->
+
+    <section class="security-bar">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+
+        <div>
+
+            <strong>
+                Secure Medical Access
+            </strong>
+
+            <small>
+                Your access is protected by
+                RAKSHA ID role-based security.
+            </small>
+
+        </div>
+
+
+        <span class="secure-status">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            SECURE
+
+        </span>
+
+    </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <strong>
+        RAKSHA ID
+    </strong>
+
+    <span>
+        | Emergency Healthcare Intelligence
+    </span>
+
+    <p>
+        © 2026 RAKSHA ID • Doctor Portal
+    </p>
+
+</footer>
+
+
+<!-- IMPORTANT: Your actual JS filename -->
+
+<script src="doctor.js"></script>
+
+</body>
+
+</html>
